@@ -1,20 +1,20 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:fragments="nav">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-5" th:fragments="nav">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Todo App</a>
             <div class="collapse navbar-collapse" id="navbarCollapse d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0 d-flex">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page">Home</a>
                     </li>
                 </ul>
                 <div class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">SignIn</a>
+                            <a class="nav-link active" th:href="@{/pages/signin}" aria-current="page">SignIn</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">LogIn</a>
+                            <a class="nav-link active" aria-current="page" th:href="@{/pages/login}">LogIn</a>
                         </li>
                     </ul>
                 </div>
