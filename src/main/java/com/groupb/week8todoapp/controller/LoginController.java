@@ -46,7 +46,7 @@ public class LoginController {
         session.setAttribute("user",user);
 
         User user1 = (User) session.getAttribute("user");
-        String names = "Hi,"+"  "+user1.getFirstName()+" "+user1.getLastName();
+        String names = user1.getFirstName();
 
         model.addAttribute("names", names);
 

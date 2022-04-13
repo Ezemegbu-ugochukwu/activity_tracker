@@ -1,10 +1,19 @@
 .navbarFlex{
   float: right;
 }
+p{
+  color: #ffffff;
+}
 
-/*LOGIN*/
+.navbar-nav:last-child{
+  padding-top: 3px;
+}
 
+.span-name{
+  margin-right: 15px;
+}
 
+  /*LOGIN*/
 *{
   padding: 0;
   margin: 0;
@@ -103,4 +112,129 @@ img{
   background-color: #fff;
   border: 1px solid;
   color: #000;
+}
+
+/*Modal*/
+.modal-login {
+  color: #636363;
+  width: 500px;
+}
+.modal-login .modal-content {
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+}
+.modal-login .modal-header {
+  border-bottom: none;
+  position: relative;
+  justify-content: center;
+}
+.modal-login h4 {
+  text-align: center;
+  font-size: 26px;
+}
+.modal-login  .form-group {
+  position: relative;
+}
+.modal-login i {
+  position: absolute;
+  left: 13px;
+  top: 11px;
+  font-size: 18px;
+}
+.modal-login .form-control {
+  padding-left: 40px;
+}
+.modal-login .form-control:focus {
+  border-color: #00ce81;
+}
+.modal-login .form-control, .modal-login .btn {
+  min-height: 40px;
+  border-radius: 3px;
+}
+.modal-login .hint-text {
+  text-align: center;
+  padding-top: 10px;
+}
+.modal-login .close {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+.modal-login .btn, .modal-login .btn:active {
+  border: none;
+  background: #00ce81 !important;
+  line-height: normal;
+}
+.modal-login .btn:hover, .modal-login .btn:focus {
+  background: #00bf78 !important;
+}
+.modal-login .modal-footer {
+  background: #ecf0f1;
+  border-color: #dee4e7;
+  text-align: center;
+  margin: 0 -20px -20px;
+  border-radius: 5px;
+  font-size: 13px;
+  justify-content: center;
+}
+.modal-login .modal-footer a {
+  color: #999;
+}
+.trigger-btn {
+  display: inline-block;
+  margin: 100px auto;
+}
+
+/*DASHBOARD*/
+.dashboard{
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.btn{
+  margin-top: 5rem !important;
+  margin-bottom: 4rem !important;
+}
+.bg-primary{
+  padding: 1rem 0 !important;
+  color: #fff;
+  font-weight: 500;
+  font-size: 2rem;
+  padding-left: .5rem !important;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.delete{
+  border: 0;
+  background-color: red !important;
+  color: #fff;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 0.2rem;
+  border-radius: 3px;
+  opacity: 0.9;
+}
+
+.delete:hover{
+  opacity: 1;
+}
+
+.edit{
+  border: 0;
+  background-color: #53b18b !important;
+  color: #fff;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 0.3rem;
+  border-radius: 3px;
+  opacity: 0.9;
+
+}
+
+.edit:hover{
+  opacity: 1;
+}
+
+.edit a{
+  color: #ffffff;
 }
