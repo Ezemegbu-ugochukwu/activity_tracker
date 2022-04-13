@@ -38,7 +38,7 @@ public class LoginController {
         if(user == null){
             String message = "Email or Password Incorrect";
 
-            model.addAttribute("message", message);
+            model.addAttribute("failed", message);
             return "pages/login";
         }
 
