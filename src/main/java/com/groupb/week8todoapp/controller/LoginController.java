@@ -42,7 +42,14 @@ public class LoginController {
             return "pages/login";
         }
 
+
         session.setAttribute("user",user);
+
+        User user1 = (User) session.getAttribute("user");
+        String names = "Hi,"+"  "+user1.getFirstName()+" "+user1.getLastName();
+
+        model.addAttribute("names", names);
+
 
         return "/dashboard";
 

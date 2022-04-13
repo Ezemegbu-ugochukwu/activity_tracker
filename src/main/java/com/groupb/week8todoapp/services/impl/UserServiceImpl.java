@@ -47,6 +47,14 @@ public class UserServiceImpl implements UserServices {
         }else return null;
     }
 
+
+    public User findById(Integer id){
+        Optional<User> optionalUser = userRepo.findById(id);
+        if(optionalUser.isPresent()){
+            return optionalUser.get();
+        }else return null;
+    }
+
     @Override
     public User login(LoginDto loginDto) {
         User user = findByEmail(loginDto.getEmail());
