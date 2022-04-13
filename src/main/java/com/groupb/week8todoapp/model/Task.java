@@ -5,7 +5,7 @@ import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+
 import java.time.LocalDateTime;
 
 @ToString
@@ -18,13 +18,13 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(nullable = false)
-    private String name;
+    private String title;
     @Column(nullable = false)
     private String description;
     private String status;
     @CreationTimestamp
-    private LocalDateTime startDate;
-    private Timestamp endDate;
+    private LocalDateTime createdDate;
+    private String endDate;
     @CreationTimestamp
     private LocalDateTime modified;
     private Boolean done = false;

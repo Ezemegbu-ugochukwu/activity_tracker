@@ -23,19 +23,19 @@
                 <h4>Create an account</h4>
                 <form method="post" th:object="${user}" th:action="@{/signIn}" >
                     <div class="form-group">
-                        <label for="">First Name:</label>
+                        <label>First Name:</label>
                         <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name" required>
                     </div>
                     <div class="form-group">
-                        <label for="">Last Name:</label>
+                        <label>Last Name:</label>
                         <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name" required>
                     </div>
                     <div class="form-group">
-                        <label for="">E-mail:</label>
+                        <label>E-mail:</label>
                         <input type="email" class="form-control" th:field="*{email}" placeholder="E-mail" required>
                     </div>
                     <div class="form-group">
-                        <label for="">Password:</label>
+                        <label>Password:</label>
                         <input type="password" class="form-control" th:field="*{password}">
                     </div>
                     <button class="btn btn-danger mb-5">Register</button>

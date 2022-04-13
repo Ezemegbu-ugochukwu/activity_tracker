@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
@@ -7,6 +7,9 @@
 <body>
 
 <p>This is the dashboard </p>
+<a th:href="@{/createTask}">createTask</a>
+
+                <h1>[[${names}]]</h1>
 
 </body>
 </html>
