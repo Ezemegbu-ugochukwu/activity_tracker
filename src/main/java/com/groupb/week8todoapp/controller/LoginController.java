@@ -51,7 +51,7 @@ public class LoginController {
         model.addAttribute("names", names);
 
 
-        return "/dashboard";
+        return "/index";
 
     }
 

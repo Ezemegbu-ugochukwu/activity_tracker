@@ -38,7 +38,7 @@ public class TaskController {
     public String createTask(@ModelAttribute("taskDto") TaskDto taskDto){
 
         taskServices.createTask(taskDto);
-        return "task";
+        return "index";
     }
 
 
