@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskServiceImpl implements TaskServices {
@@ -28,14 +29,20 @@ public class TaskServiceImpl implements TaskServices {
     }
 
     @Override
-    public boolean createTask(TaskDto taskDto) {
+    public boolean createTask(TaskDto taskDto, int id) {
+        User user = userImp.findById(id);
+
         Task task = new Task();
         task.setTitle(taskDto.getTitle());
         task.setDescription(taskDto.getDescription());
         task.setEndDate(taskDto.getEndDate());
         task.setStatus("PENDING");
 
-        taskRepo.save(task);
+//        taskRepo.save(task);
+        user.getTasks().add(task);
+
+        userRepo.save(user);
+
 
         return true;
     }
@@ -47,12 +54,35 @@ public class TaskServiceImpl implements TaskServices {
 
     @Override
     public boolean editTask(EditTaskDto editTaskDto) {
-        return false;
+
+        Task task = findTaskById(editTaskDto.getId());
+        task.setTitle(editTaskDto.getTitle());
+        task.setDescription(editTaskDto.getDescription());
+
+        taskRepo.save(task);
+        return true;
     }
 
     @Override
     public List<Task> findAllUserTask(Integer id) {
         User user = userImp.findById(id);
         return user.getTasks();
+    }
+
+    public Task findTaskById(int id){
+        Optional<Task> optionalTask = taskRepo.findById(id);
+        if(optionalTask.isPresent()){
+            return optionalTask.get();
+        }
+        return null;
+    }
+
+    @Override
+    public void updateDto(int id, TaskDto taskDto) {
+        Task task = findTaskById(id);
+        task.setTitle(taskDto.getTitle());
+        task.setDescription(taskDto.getDescription());
+
+        taskRepo.save(task);
     }
 }
