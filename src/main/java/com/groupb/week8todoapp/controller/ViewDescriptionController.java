@@ -17,7 +17,7 @@ public class ViewDescriptionController {
         this.taskRepo = taskRepo;
     }
 
-    @GetMapping("/description{id}")
+    @GetMapping("/description/{id}")
     public String viewDescription(@PathVariable("id") Integer id, Model model){
         Task task = taskRepo.findById(id).get();
 
