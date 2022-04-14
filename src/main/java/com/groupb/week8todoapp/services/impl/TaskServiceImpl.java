@@ -163,4 +163,23 @@ public class TaskServiceImpl implements TaskServices {
         if(optionalTask.isPresent())return optionalTask.get();
         return null;
     }
+
+    @Override
+    public void deleteTask(Integer userId, Integer taskId) {
+        List<Task> userTask = findAllUserTask(userId);
+
+        for(int i=0; i < userTask.size(); i++){
+            if(userTask.get(i).getId() == taskId){
+                userTask.remove(i);
+            }
+        }
+
+        User user = userRepo.findById(userId).get();
+        user.setTasks(userTask);
+
+        userRepo.save(user);
+
+        taskRepo.deleteById(taskId);
+
+    }
 }

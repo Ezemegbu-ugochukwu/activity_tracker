@@ -3,8 +3,6 @@ package com.groupb.week8todoapp.services;
 import com.groupb.week8todoapp.dto.EditTaskDto;
 import com.groupb.week8todoapp.dto.TaskDto;
 import com.groupb.week8todoapp.model.Task;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -26,4 +24,5 @@ public interface TaskServices {
     List<Task> getAllDoneTasks(int id);
     Task getSingleTask(int id);
 
+    void deleteTask(Integer userId, Integer taskId);
 }
