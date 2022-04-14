@@ -79,4 +79,12 @@ public class TaskController {
         return "dashboard";
     }
 
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id, Model model, HttpSession session){
+        User user = (User) session.getAttribute("user");
+        taskServices.deleteTask(user.getId(),id);
+
+        return "dashboard";
+    }
+
 }
