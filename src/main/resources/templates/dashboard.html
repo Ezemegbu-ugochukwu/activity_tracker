@@ -33,12 +33,12 @@
             <tbody>
             <tr>
             <tr th:each="page: ${pages}" th:id="'id_' + ${page.id}" >
-                <td> <a th:text="${page.title}" th:href="@{/description/{id}(id=${page.id})}"> </a></td>
+                <td> <a th:text="${page.title}" class="text-dark" th:href="@{/description/{id}(id=${page.id})}"> </a></td>
                 <td th:text="${page.status}"></td>
                 <td th:text="${page.createdDate}"></td>
                 <td th:text="${page.endDate}"></td>
                 <td>
-                    <button class="delete"><a th:href="@{/delete/{id}(id = ${page.id})}">Delete</a></button>
+                    <button class="delete"><a class="text-white" th:href="@{/delete/{id}(id = ${page.id})}">Delete</a></button>
                 </td>
                 <td>
 <!--                    <button class="edit"><a th:href="@{'/edit/' + ${page.id}}">Edit</a></button>-->
