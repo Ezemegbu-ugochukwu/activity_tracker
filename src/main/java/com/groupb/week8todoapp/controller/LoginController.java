@@ -1,7 +1,9 @@
 package com.groupb.week8todoapp.controller;
 
 import com.groupb.week8todoapp.dto.LoginDto;
+import com.groupb.week8todoapp.model.Task;
 import com.groupb.week8todoapp.model.User;
+import com.groupb.week8todoapp.services.TaskServices;
 import com.groupb.week8todoapp.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/pages")
@@ -17,10 +20,8 @@ public class LoginController {
     @Autowired
     private UserServices userServices;
 
-//    @GetMapping("/signin")
-//    public String signin(){
-//        return "pages/signIn";
-//    }
+    @Autowired
+    private TaskServices taskServices;
 
     @GetMapping("/login")
     public String login(Model model){
@@ -49,6 +50,10 @@ public class LoginController {
         String names = user1.getFirstName();
 
         model.addAttribute("names", names);
+
+
+        List<Task> all = taskServices.findAllUserTask(user1.getId());
+        model.addAttribute("all", all);
 
 
         return "/dashboard";

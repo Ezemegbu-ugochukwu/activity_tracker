@@ -72,10 +72,13 @@ public class TaskController {
         return "editTask";
     }
     @PostMapping("/edit")
-    public String editTask(@ModelAttribute("editTaskDto") EditTaskDto editTaskDto, HttpSession session){
+    public String editTask(@ModelAttribute("editTaskDto") EditTaskDto editTaskDto, HttpSession session, Model model){
         int id = (int) session.getAttribute("id");
         editTaskDto.setId(id);
         taskServices.editTask(editTaskDto);
+
+
+
         return "dashboard";
     }
 

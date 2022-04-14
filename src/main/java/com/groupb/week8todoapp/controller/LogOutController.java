@@ -10,5 +10,4 @@ public class LogOutController {
         session.invalidate();
         return "index";
     }
-
 }
