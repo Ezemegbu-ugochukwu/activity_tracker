@@ -40,12 +40,12 @@ public class TaskController {
     }
 
     @PostMapping("/createTask")
-    public String createTask(@ModelAttribute("taskDto") TaskDto taskDto, HttpSession session, RedirectAttributes redirectAttributes){
+    public String createTask(@ModelAttribute("taskDto") TaskDto taskDto, HttpSession session, RedirectAttributes redirectAttributes,Model model){
         User user = (User) session.getAttribute("user");
         int id = user.getId();
         taskServices.createTask(taskDto, id);
 
-        return "addToDo";
+        return getAllTask(model, session);
     }
 
 

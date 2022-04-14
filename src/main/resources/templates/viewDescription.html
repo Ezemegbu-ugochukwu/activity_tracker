@@ -3,28 +3,27 @@
 <head th:replace="/fragments/head"></head>
 <body>
 <nav th:replace="/fragments/nav"></nav>
-<div class="login-form">
+<div class="login-form description">
     <div th:object ="${task}">
             <div>
                 <div class="form-group">
-                    <label class="mb-4">Title:</label>
-                    <h5 th:text="*{title}"></h5>
+                    <h5 class="mb-2">Title:</h5>
+                    <p class="text-dark" th:text="*{title}"></p>
                 </div>
                 <div class="form-group">
-                    <label class="mb-4">Description</label>
-                    <h5 th:text="*{description}"></h5>
+                    <h5 class="mb-2">Description</h5>
+                    <p class="text-dark" th:text="*{description}"></p>
 
                 </div>
 
                 <div class="form-group">
-                    <label class="mb-4">Created At:</label>
-                    <h5 th:text="*{createdDate}"></h5>
+                    <h5 class="mb-2">Created At:</h5>
+                    <p class="text-dark" th:text="*{createdDate}"></p>
 
                 </div>
                 <div class="form-group">
-                    <label class="mb-4">Ended At</label>
-                    <h5 th:text="*{endDate}"></h5>
-
+                    <h5 class="mb-2">Ended At</h5>
+                    <p class="text-dark" th:text="*{endDate}"></p>
                 </div>
             </div>
     </div>
