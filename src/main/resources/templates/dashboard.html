@@ -15,6 +15,7 @@
         <a th:href="@{/viewAllTask}" class="btn btn-dark ml-5 trigger-btn">All</a>
     </div>
     <div class="dashboard">
+
         <div class="bg-primary" th:text="${names + ' Task'}"></div>
         <table class="table table-primary table-striped ">
             <thead>
@@ -32,7 +33,7 @@
             <tbody>
             <tr>
             <tr th:each="page: ${pages}" th:id="'id_' + ${page.id}" >
-                <td th:text="${page.title}"></td>
+                <td> <a th:text="${page.title}" th:href="@{/description/{id}(id=${page.id})}"> </a></td>
                 <td th:text="${page.status}"></td>
                 <td th:text="${page.createdDate}"></td>
                 <td th:text="${page.endDate}"></td>

@@ -25,4 +25,6 @@ public interface TaskServices {
     Task getSingleTask(int id);
 
     void deleteTask(Integer userId, Integer taskId);
+
+    EditTaskDto populate(EditTaskDto editTaskDto, Integer id);
 }

@@ -10,6 +10,14 @@
             <label>Title:</label>
             <input type="text" class="form-control mt-2" th:field="*{title}" placeholder="First Name" required>
         </div>
+
+
+        <select class="form-select my-3" th:field="*{status}">
+            <option value="PENDING">PENDING</option>
+            <option value="IN_PROGRESS">IN_PROGRESS</option>
+            <option value="DONE">DONE</option>
+        </select>
+
         <div class="form-group my-5">
             <label>Description:</label>
             <textarea type="text" class="form-control mt-2" th:field="*{description}" placeholder="Last Name" required> </textarea>

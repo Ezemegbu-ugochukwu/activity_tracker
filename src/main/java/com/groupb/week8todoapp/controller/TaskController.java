@@ -64,6 +64,8 @@ public class TaskController {
 
         EditTaskDto editTaskDto = new EditTaskDto();
         editTaskDto.setId(id);
+
+        editTaskDto =  taskServices.populate(editTaskDto, id);
         model.addAttribute("editTaskDto", editTaskDto);
         session.setAttribute("id",id);
 
@@ -73,8 +75,6 @@ public class TaskController {
     public String editTask(@ModelAttribute("editTaskDto") EditTaskDto editTaskDto, HttpSession session){
         int id = (int) session.getAttribute("id");
         editTaskDto.setId(id);
-
-
         taskServices.editTask(editTaskDto);
         return "dashboard";
     }

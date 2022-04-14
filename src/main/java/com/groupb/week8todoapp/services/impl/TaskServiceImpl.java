@@ -59,6 +59,7 @@ public class TaskServiceImpl implements TaskServices {
 
         Task task = findTaskById(editTaskDto.getId());
         task.setTitle(editTaskDto.getTitle());
+        task.setStatus(editTaskDto.getStatus());
         task.setDescription(editTaskDto.getDescription());
 
         taskRepo.save(task);
@@ -176,10 +177,18 @@ public class TaskServiceImpl implements TaskServices {
 
         User user = userRepo.findById(userId).get();
         user.setTasks(userTask);
-
         userRepo.save(user);
-
         taskRepo.deleteById(taskId);
+    }
 
+    @Override
+    public EditTaskDto populate(EditTaskDto editTaskDto, Integer id) {
+        Task task = findTaskById(id);
+        editTaskDto.setTitle(task.getTitle());
+        editTaskDto.setDescription(task.getDescription());
+        editTaskDto.setId(task.getId());
+        editTaskDto.setStatus(task.getStatus());
+
+        return editTaskDto;
     }
 }
