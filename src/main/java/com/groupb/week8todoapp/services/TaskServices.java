@@ -22,5 +22,8 @@ public interface TaskServices {
     List<Task> viewAllInProgressTask(Integer id);
     void  moveFromInProgressToPendingTask(Integer userId, Integer taskId);
     void  moveFromInProgressToDone(Integer userId, Integer taskId);
+    List<Task> getAllPendingTasks(int id);
+    List<Task> getAllDoneTasks(int id);
+    Task getSingleTask(int id);
 
 }

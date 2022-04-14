@@ -119,6 +119,8 @@ public class TaskServiceImpl implements TaskServices {
         }
     }
 
+
+
     @Override
     public void moveFromInProgressToDone(Integer userId, Integer taskId) {
         User user = userRepo.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
@@ -129,5 +131,36 @@ public class TaskServiceImpl implements TaskServices {
                 taskRepo.save(each);
             }
         }
+    }
+
+
+    @Override
+    public List<Task> getAllPendingTasks(int id) {
+        List<Task> tasks = findAllUserTask(id);
+        List<Task> pendingTasks = new ArrayList<>();
+        for(Task each: tasks){
+            if(each.getStatus().equals("PENDING")){
+                pendingTasks.add(each);
+            }
+        }
+        return pendingTasks;
+    }
+    @Override
+    public List<Task> getAllDoneTasks(int id) {
+        List<Task> tasks = findAllUserTask(id);
+        List<Task> doneTasks = new ArrayList<>();
+        for(Task each: tasks){
+            if(each.getStatus().equals("DONE")){
+                doneTasks.add(each);
+            }
+        }
+        return doneTasks;
+    }
+
+    @Override
+    public Task getSingleTask(int id) {
+        Optional<Task> optionalTask = taskRepo.findById(id);
+        if(optionalTask.isPresent())return optionalTask.get();
+        return null;
     }
 }
