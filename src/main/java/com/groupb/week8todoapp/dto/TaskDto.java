@@ -9,7 +9,6 @@ import lombok.ToString;
 @ToString
 @Setter
 public class TaskDto {
-
     private String title;
     private String description;
     private String endDate;

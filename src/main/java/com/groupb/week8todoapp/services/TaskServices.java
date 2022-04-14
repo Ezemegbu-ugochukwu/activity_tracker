@@ -11,10 +11,12 @@ import java.util.List;
 public interface TaskServices {
 
 
-    boolean createTask(TaskDto taskDto);
+    boolean createTask(TaskDto taskDto, int id);
     List<Task> findAll();
     boolean editTask(EditTaskDto editTaskDto);
 
     List<Task> findAllUserTask(Integer id);
+
+    void updateDto(int id, TaskDto taskDto);
 
 }

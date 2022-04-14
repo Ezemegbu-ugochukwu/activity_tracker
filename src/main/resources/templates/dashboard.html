@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-</head>
+<head th:replace="/fragments/head"></head>
 <body>
+<nav th:replace="/fragments/nav"></nav>
 
 <p>This is the dashboard </p>
-<a th:href="@{/createTask}">createTask</a>
+<section class="container ">
+    <!-- Button HTML (to Trigger Modal) -->
+    <div>
+        <a th:href="@{/createTask}" class="btn btn-primary ml-5 trigger-btn">Add Todo</a>
+        <a th:href="@{/pending}" class="btn btn-warning ml-5 trigger-btn">Pending</a>
+        <a th:href="@{/createTask}" class="btn btn-success ml-5 trigger-btn">Done</a>
+        <a th:href="@{/viewAllTask}" class="btn btn-dark ml-5 trigger-btn">All</a>
+    </div>
+    <div class="dashboard">
+        <div class="bg-primary" th:text="${names + ' Task'}"></div>
+        <table class="table table-primary table-striped ">
+            <thead>
+            <tr>
+                <tr class="home">
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Due when</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <tr th:each="page: ${pages}" th:id="'id_' + ${page.id}" >
+                <td th:text="${page.title}"></td>
+                <td th:text="${page.status}"></td>
+                <td th:text="${page.createdDate}"></td>
+                <td th:text="${page.endDate}"></td>
+                <td>
+                    <button class="delete">Delete</button>
+                </td>
+                <td>
+<!--                    <button class="edit"><a th:href="@{'/edit/' + ${page.id}}">Edit</a></button>-->
+                    <button class="edit"><a th:href="@{/edit/{id}(id = ${page.id})}">Edit</a></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
 
-                <h1>[[${names}]]</h1>
-
+<footer th:replace="/fragments/footer"></footer>
 </body>
 </html>
