@@ -1,5 +1,6 @@
 package com.groupb.week8todoapp.services.impl;
 
+import com.groupb.week8todoapp.UserNotFoundException;
 import com.groupb.week8todoapp.dto.EditTaskDto;
 import com.groupb.week8todoapp.dto.TaskDto;
 import com.groupb.week8todoapp.model.Task;
@@ -10,6 +11,7 @@ import com.groupb.week8todoapp.services.TaskServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,5 +86,48 @@ public class TaskServiceImpl implements TaskServices {
         task.setDescription(taskDto.getDescription());
 
         taskRepo.save(task);
+    }
+
+    @Override
+    public List<Task> viewAllInProgressTask(Integer id) {
+        // intialize the resulting array
+        // get the user by the id to know if he exist or not
+        // get the list of user's task
+        // check the list to get all task in progress
+        // save these tasksInProgress into a list and return the resulting array
+        List<Task> tasksInProgress = new ArrayList<>();
+//        Optional<User> optionalUser = userRepo.findById(id);
+        User user = userRepo.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
+        List<Task> userTasks = user.getTasks();
+
+        for (int i = 0; i < userTasks.size(); i++) {
+            if (userTasks.get(i).getStatus().equals("IN_PROGRESS")) {
+                tasksInProgress.add(userTasks.get(i));
+            }
+        }
+        return tasksInProgress;
+    }
+
+    @Override
+    public void moveFromInProgressToPendingTask(Integer userId, Integer taskId) {
+        User user = userRepo.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
+        for(Task each: user.getTasks()) {
+            if(each.getId() == taskId){
+                each.setStatus("PENDING");
+                taskRepo.save(each);
+            }
+        }
+    }
+
+    @Override
+    public void moveFromInProgressToDone(Integer userId, Integer taskId) {
+        User user = userRepo.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
+        for(Task each: user.getTasks()) {
+            if(each.getId() == taskId){
+                each.setStatus("DONE");
+                each.setDone(true);
+                taskRepo.save(each);
+            }
+        }
     }
 }

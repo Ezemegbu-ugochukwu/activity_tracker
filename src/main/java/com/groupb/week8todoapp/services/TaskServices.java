@@ -19,4 +19,8 @@ public interface TaskServices {
 
     void updateDto(int id, TaskDto taskDto);
 
+    List<Task> viewAllInProgressTask(Integer id);
+    void  moveFromInProgressToPendingTask(Integer userId, Integer taskId);
+    void  moveFromInProgressToDone(Integer userId, Integer taskId);
+
 }
